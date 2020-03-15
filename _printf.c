@@ -9,7 +9,6 @@ int _printf(const char *format, ...)
 	argum fm[] = {
 		{"c", print_c},
 		{"s", print_s},
-		{"%", print_p},
 		{NULL, NULL}
 	};
 	va_list formato;
@@ -34,7 +33,9 @@ int _printf(const char *format, ...)
 				}
 				else if (format[i + 1] == '%')
 				{
-					fm[j].f(formato);
+					_putchar(format[i]);
+					i++;
+					break;
 				}
 				j++;
 			}

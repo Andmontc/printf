@@ -9,14 +9,14 @@ int _printf(const char *format, ...)
 	argum fm[] = {
 		{"c", print_c},
 		{"s", print_s},
-		//{"%", print_p},//
+		{"%", print_p},
 		{NULL, NULL}
 	};
 	va_list formato;
 
 	va_start(formato, format);
 
-	int i, j, cont = 0;
+	int i, j;
 
 	i = 0;
 
@@ -25,12 +25,16 @@ int _printf(const char *format, ...)
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
 			j = 0;
-			while (j < 2)
+			while (j < 3)
 			{
 				if ((format[i] == '%') && (format[i + 1] == *fm[j].op))
 				{
 					fm[j].f(formato);
 					i++;
+				}
+				else if (format[i + 1] == '%')
+				{
+					fm[j].f(formato);
 				}
 				j++;
 			}

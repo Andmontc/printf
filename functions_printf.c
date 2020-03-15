@@ -1,6 +1,29 @@
 #include "holberton.h"
 #include "holberton.h"
 /**
+ * print_function - function print
+ * @format: is a parameter
+ * @formato: is a parameter
+ * Return: length of string
+ */
+int print_func(const char *format, va_list formato)
+{
+	argum fm[] = {
+		{"c", print_c},
+		{"s", print_s},
+		//{'%', print_c},//
+	};
+	int i;
+
+	for(i = 0; i < 2; i++)
+	{
+		if (format[i] == *fm[i].op)
+		{
+			fm[i].f(formato);
+		}
+	}	
+}
+/**
  * _strlen - function that returns the length of a string
  * @s: is a parameter
  * Return: length

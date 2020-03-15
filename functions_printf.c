@@ -27,7 +27,7 @@ int _putchar(char c)
 }
 /**
  * print_c - function print caracter
- * @c: is a parameter
+ * @formato: is a parameter to print
  * Return: length of string
  */
 int print_c(va_list formato)
@@ -39,7 +39,7 @@ int print_c(va_list formato)
 }
 /**
  * print_s - function print string
- * @s: is a parameter
+ * @formato: is a parameter to print
  * Return: length of string
  */
 int print_s(va_list formato)
@@ -56,6 +56,9 @@ int print_s(va_list formato)
 }
 /**
  * print_p - function porcent
- * @p: is a parameter
- * Return: length of string
+ * @formato: is a parameter to print
  */
+void print_p(va_list formato)
+{
+	write(1, '%', 1);
+}

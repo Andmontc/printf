@@ -1,5 +1,4 @@
 #include "holberton.h"
-#include <stdio.h>
 /**
  * _printf - function print string
  * @format: is a parameter
@@ -10,8 +9,9 @@ int _printf(const char *format, ...)
 	int cont = 0;
 
 	argum fm[] = {
-		{"c", print_c},
-		{"s", print_s},
+		{'c', print_c},
+		{'s', print_s},
+		{'%', print_p},
 		{'\0', NULL}
 	};
 

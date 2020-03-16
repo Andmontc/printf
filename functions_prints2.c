@@ -37,3 +37,81 @@ int print_p(void)
 	_putchar('%');
 	return (1);
 }
+/**
+ * print_d - functions that prints digits
+ * @formato: parameter to print
+ * Return: counter
+ */
+int print_d(va_list formato)
+{
+	int num, i, j = 0, sum = 0;
+	int value = 1000000000;
+	int a[10];
+
+	num = va_arg(formato, int);
+	a[0] = num / value;
+
+	for (i = 1; i < 10; i++)
+	{
+		value /= 10;
+		a[i] = (num / value) % 10;
+	}
+	if (num < 0)
+	{
+		_putchar('-');
+		j++;
+		for (i = 0; i < 10; i++)
+			a[i] *= -1;
+	}
+	i = 0;
+	while (i < 10)
+	{
+		sum += a[i];
+		if (sum != 0 || i == 9)
+		{
+			_putchar(a[i] + 48);
+			j++;
+		}
+	i++;
+	}
+	return (j);
+}
+/**
+* print_i - functions that prints digits
+* @formato: parameter to print
+* Return: counter
+*/
+int print_i(va_list formato)
+{
+	int num, i, j = 0, sum = 0;
+	int maxvalue = 1000000000;
+	int a[10];
+
+	num = va_arg(formato, int);
+	a[0] = num / maxvalue;
+
+	for (i = 1; i < 10; i++)
+	{
+		maxvalue /= 10;
+		a[i] = (num / maxvalue) % 10;
+	}
+	if (num < 0)
+	{
+		_putchar('-');
+		j++;
+		for (i = 0; i < 10; i++)
+			a[i] *= -1;
+	}
+	i = 0;
+	while (i < 10)
+	{
+		sum += a[i];
+		if (sum != 0 || i == 9)
+		{
+			_putchar(a[i] + 48);
+			j++;
+		}
+	i++;
+	}
+	return (j);
+}

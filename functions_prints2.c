@@ -23,7 +23,10 @@ int print_s(va_list formato)
 	int len = _strlen(ptr);
 
 	if (ptr == NULL)
+	{
+		ptr = "(null)";
 		return (1);
+	}
 	write(1, ptr, len);
 
 	return (len);

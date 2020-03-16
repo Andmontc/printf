@@ -30,4 +30,5 @@ int print_i(va_list formato);
 int print_u(va_list formato);
 int print_r(va_list formato);
 void print_rev(char *s);
+
 #endif

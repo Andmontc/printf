@@ -40,3 +40,78 @@ int print_p(void)
 	_putchar('%');
 	return (1);
 }
+/**
+ * print_i - functions that prints digits
+ * @i: parameter to print
+ * Return: counter
+ */
+int print_i(va_list i)
+{
+	int arr[10];
+	int digito, value, num, sum, j;
+
+	num = va_arg(i, int);
+	j = 0;
+	value = 1000000000;
+	arr[0] = num / value;
+	for (digito = 1; digito < 10; digito++)
+	{
+		value /= 10;
+		arr[digito] = (num / value) % 10;
+	}
+	if (num < 0)
+	{
+		_putchar('-');
+		j++;
+		for (digito = 0; digito < 10; digito++)
+			arr[digito] *= -1;
+	}
+	for (digito = 0, sum = 0; digito < 10; digito++)
+	{
+		sum += arr[digito];
+		if (sum != 0 || digito == 9)
+		{
+			_putchar('0' + arr[digito]);
+			j++;
+		}
+	}
+	return (j);
+}
+
+/**
+ * print_d - prints a decimal
+ * @d: decimal to print
+ * Return: number of digits printed and if negative adds the sign printed
+ */
+int print_d(va_list d)
+{
+	int a[10];
+	int it, m, n, sum, j;
+
+	n = va_arg(d, int);
+	j = 0;
+	m = 1000000000;
+	a[0] = n / m;
+	for (it = 1; it < 10; it++)
+	{
+		m /= 10;
+		a[it] = (n / m) % 10;
+	}
+	if (n < 0)
+	{
+		_putchar('-');
+		j++;
+		for (it = 0; it < 10; it++)
+			a[it] *= -1;
+	}
+	for (it = 0, sum = 0; it < 10; it++)
+	{
+		sum += a[it];
+		if (sum != 0 || it == 9)
+		{
+			_putchar(a[it] + 48);
+			j++;
+		}
+	}
+	return (j);
+}

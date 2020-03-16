@@ -1,27 +1,36 @@
 #include "holberton.h"
 #include "holberton.h"
+#include <stdio.h>
 /**
  * print_function - function print
  * @format: is a parameter
  * @formato: is a parameter
  * Return: length of string
  */
-int print_func(const char *format, va_list formato)
+int print_func(const char *format, argum fm[], va_list formato)
 {
-	argum fm[] = {
-		{"c", print_c},
-		{"s", print_s},
-		//{'%', print_c},//
-	};
-	int i;
+	int i, j, cont = 0;
 
-	for(i = 0; i < 2; i++)
+	for (i = 0; format && format[i]; i++)
 	{
-		if (format[i] == *fm[i].op)
+		if (format[i] == '%' && format[i + 1] != '\0')
 		{
-			fm[i].f(formato);
+			for (j = 0; *fm[j].op != '\0'; j++)
+			{
+				if ((format[i + 1] == *fm[j].op))
+				{
+					cont += fm[j].f(formato);
+					i++;
+					break;
+				}
+			}
+			if (*fm[j].op == '\0')
+				cont += _putchar('%');
 		}
-	}	
+		else
+			cont += _putchar(format[i]);
+	}
+	return (cont);
 }
 /**
  * _strlen - function that returns the length of a string
@@ -81,7 +90,3 @@ int print_s(va_list formato)
  * print_p - function porcent
  * @formato: is a parameter to print
  */
-void print_p(va_list formato)
-{
-	write(1, '%', 1);
-}

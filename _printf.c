@@ -14,14 +14,13 @@ int _printf(const char *format, ...)
 		{'%', print_p},
 		{'\0', NULL}
 	};
-
 	va_list formato;
 
 	va_start(formato, format);
 
-	if (format == NULL)
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
-	cont = print_func(format, fm, formato);
+	cont += print_func(format, fm, formato);
 	va_end(formato);
 	return (cont);
 }

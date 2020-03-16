@@ -12,7 +12,7 @@ int print_func(const char *format, argum fm[], va_list formato)
 
 	for (i = 0; format && format[i]; i++)
 	{
-		if (format[i] == '%' && format[i + 1] != '\0')
+		if (format[i] == '%')
 		{
 			for (j = 0; fm[j].op != '\0'; j++)
 			{
@@ -23,8 +23,8 @@ int print_func(const char *format, argum fm[], va_list formato)
 					break;
 				}
 			}
-			if (fm[j].op == '\0')
-				cont += _putchar('%');
+			if (fm[j].op == '\0' || format[i] == ' ')
+				return (-1);
 		}
 		else
 			cont += _putchar(format[i]);

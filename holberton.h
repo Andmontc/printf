@@ -25,5 +25,7 @@ int print_c(va_list formato);
 int print_s(va_list formato);
 int print_p(void);
 int _strlen(char *s);
+int print_d(va_list formato);
+int print_i(va_list formato);
 
 #endif

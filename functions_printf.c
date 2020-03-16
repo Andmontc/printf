@@ -15,16 +15,16 @@ int print_func(const char *format, argum fm[], va_list formato)
 	{
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
-			for (j = 0; *fm[j].op != '\0'; j++)
+			for (j = 0; fm[j].op != '\0'; j++)
 			{
-				if ((format[i + 1] == *fm[j].op))
+				if ((format[i + 1] == fm[j].op))
 				{
 					cont += fm[j].f(formato);
 					i++;
 					break;
 				}
 			}
-			if (*fm[j].op == '\0')
+			if (fm[j].op == '\0')
 				cont += _putchar('%');
 		}
 		else
@@ -88,5 +88,9 @@ int print_s(va_list formato)
 }
 /**
  * print_p - function porcent
- * @formato: is a parameter to print
  */
+int print_p(void)
+{
+	_putchar('%');
+	return(1);
+}

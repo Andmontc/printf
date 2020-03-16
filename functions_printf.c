@@ -56,3 +56,19 @@ int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
+/**
+ * print_rev - function that prints a string
+ * @s: The string to print
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+void print_rev(char *s)
+{
+	int i, j;
+
+	for (i = 0; s[i] != '\0'; i++)
+		;
+
+	for (j = i - 1; j >= 0; j--)
+		_putchar(s[j]);
+}

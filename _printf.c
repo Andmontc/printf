@@ -14,6 +14,8 @@ int _printf(const char *format, ...)
 		{'%', print_p},
 		{'d', print_d},
 		{'i', print_d},
+		{'u', print_u},
+		{'r', print_r},
 		{'\0', NULL}
 	};
 	va_list formato;

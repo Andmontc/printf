@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 
 /**
  * struct op - Struct op
@@ -23,5 +24,6 @@ int _putchar(char c);
 int print_c(va_list formato);
 int print_s(va_list formato);
 int print_p(void);
+int _strlen(char *s);
 
 #endif

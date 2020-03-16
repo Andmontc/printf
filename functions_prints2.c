@@ -67,7 +67,7 @@ int print_d(va_list formato)
 			a[i] *= -1;
 	}
 	i = 0;
-	while (i < 10)
+	for (i = 0; i < 10; i++)
 	{
 		sum += a[i];
 		if (sum != 0 || i == 9)
@@ -75,7 +75,6 @@ int print_d(va_list formato)
 			_putchar(a[i] + 48);
 			j++;
 		}
-	i++;
 	}
 	return (j);
 }
@@ -87,16 +86,16 @@ int print_d(va_list formato)
 int print_i(va_list formato)
 {
 	int num, i, j = 0, sum = 0;
-	int maxvalue = 1000000000;
+	int value = 1000000000;
 	int a[10];
 
 	num = va_arg(formato, int);
-	a[0] = num / maxvalue;
+	a[0] = num / value;
 
 	for (i = 1; i < 10; i++)
 	{
-		maxvalue /= 10;
-		a[i] = (num / maxvalue) % 10;
+		value /= 10;
+		a[i] = (num / value) % 10;
 	}
 	if (num < 0)
 	{
@@ -105,8 +104,7 @@ int print_i(va_list formato)
 		for (i = 0; i < 10; i++)
 			a[i] *= -1;
 	}
-	i = 0;
-	while (i < 10)
+	for (i = 0; i < 10; i++)
 	{
 		sum += a[i];
 		if (sum != 0 || i == 9)
@@ -114,7 +112,6 @@ int print_i(va_list formato)
 			_putchar(a[i] + 48);
 			j++;
 		}
-	i++;
 	}
 	return (j);
 }

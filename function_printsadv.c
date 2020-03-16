@@ -30,3 +30,35 @@ int print_u(va_list formato)
 	}
 	return (j);
 }
+/**
+ * print_b - prints a binary
+ * @formato: decimal number to print in binary
+ * Return: number of digits printed
+ */
+int print_b(va_list formato)
+{
+	unsigned int a[32];
+	unsigned int i, value, num, sum = 0;
+	int j = 0;
+
+
+	num = va_arg(formato, unsigned int);
+	value = 2147483648;
+	a[0] = num / value;
+
+	for (i = 1; i < 32; i++)
+	{
+		value /= 2;
+		a[i] = (num / value) % 2;
+	}
+	for (i = 0; i < 32; i++)
+	{
+		sum += a[i];
+		if (sum || i == 31)
+		{
+			_putchar(a[i] + 48);
+			j++;
+		}
+	}
+	return (j);
+}

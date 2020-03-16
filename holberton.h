@@ -13,8 +13,8 @@
  */
 typedef struct op
 {
-	char *op;
-	int (*f)(va_list);
+	char op;
+	int (*f)();
 } argum;
 
 int _printf(const char *format, ...);
@@ -22,6 +22,6 @@ int print_func(const char *format, argum fm[], va_list formato);
 int _putchar(char c);
 int print_c(va_list formato);
 int print_s(va_list formato);
-void print_p(va_list formato);
+int print_p(void);
 
 #endif

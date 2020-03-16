@@ -41,75 +41,75 @@ int print_p(void)
 	return (1);
 }
 /**
- * print_d - functions that prints digits
+ * print_i - functions that prints digits
  * @formato: parameter to print
  * Return: counter
  */
-int print_d(va_list formato)
+int print_i(va_list formato)
 {
-	int num, i, j = 0, sum = 0;
-	int value = 1000000000;
-	int a[10];
+	int arr[10];
+	int i, value, num, sum, j;
 
 	num = va_arg(formato, int);
-	a[0] = num / value;
-
+	j = 0;
+	value = 1000000000;
+	arr[0] = num / value;
 	for (i = 1; i < 10; i++)
 	{
 		value /= 10;
-		a[i] = (num / value) % 10;
+		arr[i] = (num / value) % 10;
 	}
 	if (num < 0)
 	{
 		_putchar('-');
 		j++;
 		for (i = 0; i < 10; i++)
-			a[i] *= -1;
+			arr[i] *= -1;
 	}
-	i = 0;
-	for (i = 0; i < 10; i++)
+	for (i = 0, sum = 0; i < 10; i++)
 	{
-		sum += a[i];
+		sum += arr[i];
 		if (sum != 0 || i == 9)
 		{
-			_putchar(a[i] + 48);
+			_putchar('0' + arr[i]);
 			j++;
 		}
 	}
 	return (j);
 }
+
 /**
-* print_i - functions that prints digits
-* @formato: parameter to print
-* Return: counter
-*/
-int print_i(va_list formato)
+ * print_d - prints a decimal
+ * @formato: decimal to print
+ * Return: number of digits printed and if negative adds the sign printed
+ */
+int print_d(va_list formato)
 {
-	int num, i, j = 0, sum = 0;
-	int value = 1000000000;
 	int a[10];
+	int it, m, n, sum, j;
 
-	num = va_arg(formato, int);
-	a[0] = num / value;
-
-	for (i = 1; i < 10; i++)
+	n = va_arg(formato, int);
+	j = 0;
+	m = 1000000000;
+	a[0] = n / m;
+	for (it = 1; it < 10; it++)
 	{
-		value /= 10;
-		a[i] = (num / value) % 10;
+		m /= 10;
+		a[it] = (n / m) % 10;
 	}
-	if (num < 0)
+	if (n < 0)
 	{
 		_putchar('-');
 		j++;
-		for (i = 0; i < 10; i++)
-			a[i] *= -1;
+		for (it = 0; it < 10; it++)
+			a[it] *= -1;
 	}
-	for (i = 0; i < 10; i++)
+	for (it = 0, sum = 0; it < 10; it++)
 	{
-		sum += a[i];
-		if (sum != 0 || i == 9)
+		sum += a[it];
+		if (sum != 0 || it == 9)
 		{
-			_putchar(a[i] + 48);
+			_putchar(a[it] + 48);
 			j++;
 		}
 	}

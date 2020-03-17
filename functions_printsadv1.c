@@ -22,3 +22,12 @@ int print_r(va_list formato)
 
 	return (len);
 }
+/**
+ *print_R - funtion that prints in rot 13
+ *@formato: string to print
+ * Return: lenght
+ */
+int print_R(va_list formato)
+{
+	return (rot13(va_arg(formato, char *)));
+}

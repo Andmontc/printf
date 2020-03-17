@@ -62,3 +62,35 @@ int print_b(va_list formato)
 	}
 	return (j);
 }
+/**
+ * print_o - prints a octal
+ * @formato: decimal number to print in binary
+ * Return: number of digits printed
+ */
+int print_o(va_list formato)
+{
+	unsigned int a[11];
+	unsigned int i, value, num, sum = 0;
+	int j = 0;
+
+
+	num = va_arg(formato, unsigned int);
+	value = 1073741824;
+	a[0] = num / value;
+
+	for (i = 1; i < 11; i++)
+	{
+		value /= 8;
+		a[i] = (num / value) % 8;
+	}
+	for (i = 0; i < 11; i++)
+	{
+		sum += a[i];
+		if (sum || i == 10)
+		{
+			_putchar(a[i] + '0');
+			j++;
+		}
+	}
+	return (j);
+}

@@ -101,7 +101,7 @@ int rot13(char *s)
 		}
 		if (j > 51)
 		{
-			_putchar(s[j]);
+			_putchar(s[i]);
 		}
 	}
 	return (len);

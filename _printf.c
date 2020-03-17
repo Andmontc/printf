@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <stdio.h>
 /**
  * _printf - function print string
  * @format: is a parameter
@@ -6,30 +7,30 @@
  */
 int _printf(const char *format, ...)
 {
-	int cont = 0, i;
+	int cont = 0;
+	argum fm[] = {
+		{'c', print_c},
+		{'s', print_s},
+		{'%', print_p},
+		{'d', print_d},
+		{'i', print_d},
+		{'u', print_u},
+		{'r', print_r},
+		{'b', print_b},
+		{'R', print_R},
+		{'o', print_o},
+		{'x', print_hexLower},
+		{'X', print_hexUpper},
+		{'\0', NULL}
+	};
 
 	va_list formato;
 
 	va_start(formato, format);
 
-	if (format == NULL)
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
-	for (i = 0; format && format[i]; i++)
-	{
-		if (format[i] && format[i] != '%')
-		{
-			cont += _putchar(format[i]);
-		}
-		if (format[i] == '%')
-		{
-			while (format[i + 1] == ' ')
-				i++;
-			if (format[i + 1] == '\0')
-				return (-1);
-			cont += print_func(formato, format[i + 1]);
-			i++;
-		}
-	}
+	cont += print_func(format, fm, formato);
 	va_end(formato);
 	return (cont);
 }

@@ -1,34 +1,35 @@
 #include "holberton.h"
 /**
  * print_func - function print
- * @c: is a parameter
+ * @format: is a parameter
+ * @fm: struct
  * @formato: is a parameter
  * Return: length of string
  */
-int print_func(va_list formato, char c)
+int print_func(const char *format, argum fm[], va_list formato)
 {
-	int i, cont = 0;
+	int i, j, cont = 0;
 
-	argum fm[] = {
-		{'c', print_c},
-		{'s', print_s},
-		{'%', print_p},
-		{'d', print_d},
-		{'i', print_d},
-		{'u', print_u},
-		{'r', print_r},
-		{'b', print_b},
-		{'R', print_R},
-		{'o', print_o},
-		{'\0', NULL}
-	};
-
-	for (i = 0; fm[i].op; i++)
+	for (i = 0; format && format[i]; i++)
 	{
-		if (c == fm[i].op)
+		if (format[i] == '%')
 		{
-			cont += (fm[i].f(formato));
+			while (format[i + 1] == ' ')
+				i++;
+			for (j = 0; fm[j].op != '\0'; j++)
+			{
+				if (format[i + 1] == fm[j].op)
+				{
+					cont += fm[j].f(formato);
+					i++;
+					break;
+				}
+			}
+			if (fm[j].op == '\0')
+				cont += _putchar('%');
 		}
+		else
+			cont += _putchar(format[i]);
 	}
 	return (cont);
 }

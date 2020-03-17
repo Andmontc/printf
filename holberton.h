@@ -19,7 +19,7 @@ typedef struct op
 } argum;
 
 int _printf(const char *format, ...);
-int print_func(va_list formato, char c);
+int print_func(const char *format, argum fm[], va_list formato);
 int _putchar(char c);
 int print_c(va_list formato);
 int print_s(va_list formato);
@@ -34,5 +34,7 @@ int print_b(va_list formato);
 int rot13(char *s);
 int print_R(va_list formato);
 int print_o(va_list formato);
+int print_hexLower(va_list formato);
+int print_hexUpper(va_list formato);
 
 #endif

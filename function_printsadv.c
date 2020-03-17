@@ -64,7 +64,7 @@ int print_b(va_list formato)
 }
 /**
  * print_o - prints a octal
- * @formato: decimal number to print in binary
+ * @formato: is a parameter binary
  * Return: number of digits printed
  */
 int print_o(va_list formato)
@@ -90,6 +90,68 @@ int print_o(va_list formato)
 		{
 			_putchar(a[i] + '0');
 			j++;
+		}
+	}
+	return (j);
+}
+/**
+ * print_hexLower - prints a hexacedimal in lowercase
+ * @formato: is a parameter
+ * Return: number of digits printed
+ */
+int print_hexLower(va_list formato)
+{
+	unsigned int num, value, i, sum;
+	unsigned int a[8];
+	int j = 0;
+
+	num = va_arg(formato, unsigned int);
+	value = 268435456;
+	for (i = 0; i < 8; i++)
+	{
+		a[i] = (num / value) % 16;
+		value /= 16;
+	}
+	for (i = 0, sum = 0, j = 0; i < 8; i++)
+	{
+		sum += a[i];
+		if (sum || i == 7)
+		{
+			if (a[i] < 10)
+				j += _putchar(a[i] + '0');
+			else
+				j += _putchar(39 + a[i] + '0');
+		}
+	}
+	return (j);
+}
+/**
+ * print_hexUpper - prints a hexacedimal in uppercase
+ * @formato: is a parameter
+ * Return: number of digits printed
+ */
+int print_hexUpper(va_list formato)
+{
+	unsigned int num, value, i, sum;
+	unsigned int a[8];
+	int j = 0;
+
+	num = va_arg(formato, unsigned int);
+	value = 268435456;
+	for (i = 0; i < 8; i++)
+	{
+		a[i] = (num / value) % 16;
+		value /= 16;
+	}
+	for (i = 0, sum = 0, j = 0; i < 8; i++)
+	{
+		sum += a[i];
+		if (sum || i == 7)
+		{
+			if (a[i] < 10)
+				j += _putchar(a[i] + '0');
+			else
+				j += _putchar(7 + a[i] + '0');
 		}
 	}
 	return (j);

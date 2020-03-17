@@ -30,7 +30,7 @@ int print_func(const char *format, argum fm[], va_list formato)
 			}
 			if (format[i] != fm[j].op)
 			{
-				if (format[i + 1] != '\0' )
+				if (format[i + 1] != '\0')
 				{
 					_putchar('%');
 					_putchar(' ');

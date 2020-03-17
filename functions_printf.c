@@ -28,10 +28,14 @@ int print_func(const char *format, argum fm[], va_list formato)
 					break;
 				}
 			}
-			if (fm[j].op == '\0')
+			if (format[i] != fm[j].op)
 			{
-				cont += _putchar('%');
-				cont += _putchar(' ');
+				if (format[i + 1] != '\0' )
+				{
+					_putchar('%');
+					_putchar(' ');
+					cont++;
+				}
 			}
 		}
 		else

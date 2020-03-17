@@ -6,28 +6,30 @@
  */
 int _printf(const char *format, ...)
 {
-	int cont = 0;
+	int cont = 0, i;
 
-	argum fm[] = {
-		{'c', print_c},
-		{'s', print_s},
-		{'%', print_p},
-		{'d', print_d},
-		{'i', print_d},
-		{'u', print_u},
-		{'r', print_r},
-		{'b', print_b},
-		{'R', print_R},
-		{'o', print_o},
-		{'\0', NULL}
-	};
 	va_list formato;
 
 	va_start(formato, format);
 
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+	if (format == NULL)
 		return (-1);
-	cont += print_func(format, fm, formato);
+	for (i = 0; format && format[i]; i++)
+	{
+		if (format[i] && format[i] != '%')
+		{
+			cont += _putchar(format[i]);
+		}
+		if (format[i] == '%')
+		{
+			while (format[i + 1] == ' ')
+				i++;
+			if (format[i + 1] == '\0')
+				return (-1);
+			cont += print_func(formato, format[i + 1]);
+			i++;
+		}
+	}
 	va_end(formato);
 	return (cont);
 }

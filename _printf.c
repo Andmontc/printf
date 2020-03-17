@@ -12,17 +12,21 @@ int _printf(const char *format, ...)
 
 	va_start(formato, format);
 
-	for (i = 0; format != NULL && format[i] != '\0'; i++)
+	for (i = 0; format && format[i]; i++)
 	{
+		if (format[i] && format[i] != '%')
+		{
+			cont += _putchar(format[i]);
+		}
 		if (format[i] == '%')
 		{
+			while (format[i + 1] == ' ')
+				i++;
 			if (format[i + 1] == '\0')
 				return (-1);
 			cont += print_func(formato, format[i + 1]);
 			i++;
 		}
-		else
-			cont += _putchar(format[i]);
 	}
 	va_end(formato);
 	return (cont);

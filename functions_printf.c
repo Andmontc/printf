@@ -67,8 +67,42 @@ void print_rev(char *s)
 	int i, j;
 
 	for (i = 0; s[i] != '\0'; i++)
-		;
+	;
 
 	for (j = i - 1; j >= 0; j--)
 		_putchar(s[j]);
+}
+/**
+* *rot13 - function rot
+* @s: string
+* Return: srrin in rot13
+*/
+int rot13(char *s)
+{
+	int i, j, len;
+	char am[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char nz[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+
+	len = _strlen(s);
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		for (j = 0; j <= 51; j++)
+		{
+			if (s[i] == am[j])
+			{
+				_putchar(nz[j]);
+				break;
+			}
+			else if (s[i] == nz[j])
+			{
+				_putchar(am[j]);
+				break;
+			}
+		}
+		if (j > 51)
+		{
+			_putchar(s[j]);
+		}
+	}
+	return (len);
 }

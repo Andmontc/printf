@@ -28,15 +28,14 @@ int print_func(const char *format, argum fm[], va_list formato)
 					break;
 				}
 			}
-			if (format[i] != fm[j].op)
+			if (format[i] != fm[j].op && format[i] != '%')
 			{
-				if (format[i + 1] != '\0')
-				{
-					_putchar('%');
-					_putchar(' ');
-					cont++;
-				}
+				if (format[i + 1] != ' ' && (format[i + 1] != '\0'))
+					cont += _putchar('%');
+				cont += _putchar(' ');
 			}
+			if (format[i] != fm[j].op && format[i] != ' ' && format[i + 1] != '\0')
+				cont += _putchar('%');
 		}
 		else
 			cont += _putchar(format[i]);

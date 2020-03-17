@@ -1,0 +1,98 @@
+.TH _Printf 3 "17 March 2020" "0.0" "_printf man page"
+.SH NAME
+.B _Printf.c
+- This program recreates a custom printf
+.SH SYNOPSIS
+.B include "holberton.h"
+
+.B int _printf(const char *format, ...): %[FLAGS]
+
+.SH DESCRIPTION
+A colloborative project to create a custom printf function.
+The function _printf produces a data type passed through the format to stdout and returns
+the number of characters printed according to a format given.
+
+A format string consists of a string of characters.
+Default characters (characters that are %) are duplicated to the output.
+The conversion specifiers that are intitilized by the % ends with a flag.
+
+.B Flag Characters
+The _printf function takes several flag characters that convert it to an alternative form.
+The characters are followed by the % symbol.
+The characters used for conversion include c,b,s,i,d,u,o,x,X,%.
+
+.SH CONVERSION SPECIFIERS
+Specifiers represented with a % and a character can be applied to display the
+value
+.TP
+.B c
+- This conversion specifier represents characters.
+.TP
+.B b
+- This conversion specifier represents binaries.
+.TP
+.B s
+- This conversion specifier represents strings.
+.TP
+.B i/d
+- The i and d specifiers represents integers.
+.TP
+.B u
+- This conversion specifier converts unsigned integers.
+.TP
+.B o
+- This conversion specifier represents octals.
+.TP
+.B x
+- This conversion specifier represents lowercase hexidecimals.
+.TP
+.B X
+- This conversion specifier represents uppercase hexidecimals.
+.TP
+.B %
+- This conversion specifier represents the % character.
+.TP
+.B r
+- This conversion specifier represents a reverse string
+.TP
+.B R
+- This conversion specifier represents Rot-13 strings
+
+.SH HELPER FUNCTIONS
+Several custom helper functions are utilized inside of the _printf function.
+
+.SH EXAMPLES
+int d = 3;
+_printf("%d\n", d);
+
+output: 3
+
+-------------
+char *s = "Hello, World!
+_printf("%s\n", s);
+
+output: Hello, World!
+
+-------------
+char *c = "hola";
+_printf("%R\n", c);
+
+output: ubyn
+
+-------------
+char k = "a";
+_printf("%c\n", k);
+
+output: a
+
+.SH RETURN VALUES
+The _printf function returns an integer representing the number of characters printed.
+
+.SH SEE ALSO
+.man printf (3)
+
+.SH BUGS
+No known bugs.
+
+.SH Author:
+Nicolas Alvarez Tobon, Oscar Andres Montes

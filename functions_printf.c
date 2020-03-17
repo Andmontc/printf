@@ -7,7 +7,7 @@
  */
 int print_func(va_list formato, char c)
 {
-	int i;
+	int i, cont = 0;
 
 	argum fm[] = {
 		{'c', print_c},
@@ -27,10 +27,10 @@ int print_func(va_list formato, char c)
 	{
 		if (c == fm[i].op)
 		{
-			return (fm[i].f(formato));
+			cont += (fm[i].f(formato));
 		}
 	}
-	return (1);
+	return (cont);
 }
 /**
  * _strlen - function that returns the length of a string

@@ -15,6 +15,8 @@ int print_r(va_list formato)
 		ptr = "(null)";
 		return (1);
 	}
+	if (*ptr == '\0')
+		return (-1);
 
 	print_rev(ptr);
 

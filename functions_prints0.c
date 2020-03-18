@@ -25,10 +25,8 @@ int print_s(va_list formato)
 	int j;
 
 	if (ptr == NULL)
-	{
 		ptr = "(null)";
-	}
-	
+
 	for (j = 0; ptr[j]; j++)
 		_putchar(ptr[j]);
 	return (j);

@@ -6,10 +6,11 @@
  */
 int print_c(va_list formato)
 {
-	int i = 0;
+	char c;
 
-	i = _putchar(va_arg(formato, int));
-	return (i);
+	c = (char)va_arg(formato, int);
+	_putchar(c);
+	return (1);
 }
 /**
  * print_s - function print string
@@ -18,19 +19,18 @@ int print_c(va_list formato)
  */
 int print_s(va_list formato)
 {
-	int i;
 	char *ptr = va_arg(formato, char *);
+
+	int len = _strlen(ptr);
 
 	if (ptr == NULL)
 	{
 		ptr = "(null)";
 		return (-1);
 	}
-	for (i = 0; ptr[i]; i++)
-	{
-		_putchar(ptr[i]);
-	}
-return (i);
+	write(1, ptr, len);
+
+	return (len);
 }
 /**
  * print_p - function porcent

@@ -10,15 +10,8 @@ int print_func(const char *format, argum fm[], va_list formato)
 {
 	int i, j, cont = 0;
 
-	if (format == NULL)
-		return (-1);
-
 	for (i = 0; format && format[i]; i++)
 	{
-		if (format[i] == '%' && format[i + 1] == '\0')
-		{
-			return (-1);
-		}
 		if (format[i] == '%')
 		{
 			while (format[i + 1] == ' ')
@@ -29,6 +22,7 @@ int print_func(const char *format, argum fm[], va_list formato)
 				{
 					cont += fm[j].f(formato);
 					i++;
+					break;
 				}
 			}
 			if (fm[j].op == '\0')

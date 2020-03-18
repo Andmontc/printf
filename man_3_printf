@@ -85,6 +85,13 @@ _printf("%c\n", k);
 
 output: a
 
+-------------
+char *k = "Hello";
+char s = 'a';
+_printf("%k, %a\n", k, s);
+
+output: Hello, a
+
 .SH RETURN VALUES
 The _printf function returns an integer representing the number of characters printed.
 

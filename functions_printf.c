@@ -8,43 +8,35 @@
  */
 int print_func(const char *format, argum fm[], va_list formato)
 {
-	int i = 0, j, cont = 0;
+	int i, j, cont = 0;
 
-	if (!format)
+	if (format == NULL)
 		return (-1);
 
-	if (i == 0 && format[i + 1] == '\0')
-		return (-1);
-
-	while (format[i] != '\0')
+	for (i = 0; format && format[i]; i++)
 	{
+		if (format[i] == '%' && format[i + 1] == '\0')
+		{
+			return (-1);
+		}
 		if (format[i] == '%')
 		{
-			j = 0;
-			while (fm[j].op != '\0')
+			while (format[i + 1] == ' ')
+				i++;
+			for (j = 0; fm[j].op != '\0'; j++)
 			{
-				if (fm[j].op == format[i + 1])
+				if (format[i + 1] == fm[j].op)
 				{
 					cont += fm[j].f(formato);
 					i++;
-					break;
 				}
-				j++;
 			}
 			if (fm[j].op == '\0')
-			{
-				_putchar('%');
-				cont++;
-			}
+				cont += _putchar('%');
 		}
 		else
-		{
-			_putchar(format[i]);
-			cont++;
-		}
-		i++;
+			cont += _putchar(format[i]);
 	}
-	va_end(formato);
 	return (cont);
 }
 /**

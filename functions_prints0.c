@@ -21,15 +21,18 @@ int print_s(va_list formato)
 {
 	char *ptr = va_arg(formato, char *);
 
-	int len = _strlen(ptr);
+	int j;
 
 	if (ptr == NULL)
 	{
 		ptr = "(null)";
 	}
-	write(1, ptr, len);
+	for (j = 0; ptr[j]; j++)
+	{
+		_putchar(ptr[j]);
+	}
 
-	return (len);
+	return (j);
 }
 /**
  * print_p - function porcent

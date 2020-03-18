@@ -17,7 +17,7 @@ int print_func(const char *format, argum fm[], va_list formato)
 	{
 		if (format[i] == '%' && format[i + 1] == '\0')
 		{
-			_putchar(format[i]);
+			_putchar('\0');
 			return (-1);
 		}
 		if (format[i] == '%')

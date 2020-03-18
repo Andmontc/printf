@@ -62,32 +62,43 @@ value
 Several custom helper functions are utilized inside of the _printf function.
 
 .SH EXAMPLES
+
 int d = 3;
+
 _printf("%d\n", d);
 
 output: 3
 
 -------------
+
 char *s = "Hello, World!
+
 _printf("%s\n", s);
 
 output: Hello, World!
 
 -------------
+
 char *c = "hola";
+
 _printf("%R\n", c);
 
 output: ubyn
 
 -------------
+
 char k = "a";
+
 _printf("%c\n", k);
 
 output: a
 
 -------------
+
 char *k = "Hello";
+
 char s = 'a';
+
 _printf("%k, %a\n", k, s);
 
 output: Hello, a

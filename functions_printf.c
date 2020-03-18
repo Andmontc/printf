@@ -10,6 +10,9 @@ int print_func(const char *format, argum fm[], va_list formato)
 {
 	int i, j, cont = 0;
 
+	if (format == NULL)
+		return (-1);
+
 	for (i = 0; format && format[i]; i++)
 	{
 		if (format[i] == '%')

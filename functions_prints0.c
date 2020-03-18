@@ -25,7 +25,7 @@ int print_s(va_list formato)
 	if (ptr == NULL)
 	{
 		ptr = "(null)";
-		return (NULL);
+		return (-1);
 	}
 	write(1, ptr, len);
 
